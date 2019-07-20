@@ -1,5 +1,5 @@
 # moveit_UR5_test
-Some examples which use moveit! to manipulate UR5 (robot arm)
+Some examples which use `moveit!` to manipulate UR5 (robot arm)
 
 ## How to run real ur5 model?
 ### 1. Create a workspace
