@@ -29,7 +29,7 @@ roslaunch ur_description test.launch
 > You should see an rviz window showing the UR5 in a lying-down position, and a separate window where the joint values may be manually specified. Note that this is not a simulation, just a visualization of the arm model. To simulate UR5 or UR10, see ur_gazebo.
 
 ### 5. Making contact with UR5
-#### 1). Install package [ur_modern_driver](https://github.com/ros-industrial/ur_modern_driver)
+#### 1). Install package [ur_modern_driver](https://github.com/ros-industrial/ur_modern_driver)  
 #### 2). Make the package 
 ```
 catkin_make
