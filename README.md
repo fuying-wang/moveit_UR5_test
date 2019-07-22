@@ -13,7 +13,7 @@ mkdir -p ws_moveit/src
    ROS-Industrial support for Univesal Robots manipulators.
 
 ### 3. Configure hardware
->  To enable networking, use the UR’s teach-pendant to navigate to the Setup Robot -> Setup Network Menu (shown in the below attachment).  
+>  To enable networking, use the UR’s teach-pendant to navigate to the Setup Robot -> Setup Network Menu.  
 **Note**: In order to test the communication between computer and robot arm, you can use this command:
 ```
 ping IP_OF_THE_ROBOT
@@ -21,11 +21,11 @@ ping IP_OF_THE_ROBOT
 
 ### 4. Describe the arm to ROS
 #### 1). Install the package: [ROS_Industrial](http://wiki.ros.org/Industrial/Install) 
-#### 2). Run the following launch files: 
+<!-- #### 2). Run the following launch files: 
 ```
 roslaunch ur_description ur5_upload.launch
 roslaunch ur_description test.launch
-```
+``` -->
 > You should see an rviz window showing the UR5 in a lying-down position, and a separate window where the joint values may be manually specified. Note that this is not a simulation, just a visualization of the arm model. To simulate UR5 or UR10, see ur_gazebo.
 
 ### 5. Making contact with UR5
@@ -46,13 +46,15 @@ sudo apt install ros-<distro>-ur-description
 ```
 
 ### 6. Using Moveit! with hardware 
-####　１). For setting up the MoveIt! nodes to allow motion planning run (assumes the connection is already established from section 4.3 above):
+####　１). For setting up the MoveIt! nodes to allow motion planning run (assumes the connection is already established):
 ```
-roslaunch ur5_moveit_config ur5_moveit_planning_execution.launch
+<!-- roslaunch ur5_moveit_config ur5_moveit_planning_execution.launch -->
+roslaunch ur5_e_moveit_config ur5_e_moveit_planning_execution.launch
 ```
 #### 2). For starting up RViz with a configuration including the MoveIt! Motion Planning plugin run:
 ```
-roslaunch ur5_moveit_config moveit_rviz.launch config:=true
+<!-- roslaunch ur5_moveit_config moveit_rviz.launch config:=true -->
+roslaunch ur5_e_moveit_config moveit_rviz.launch config:=true
 ```
 > Note that as MoveIt! seems to have difficulties with finding plans for the UR with full joint limits [-2pi, 2pi], there is a joint_limited version using joint limits restricted to [-pi,pi]. In order to use this joint limited version, simply use the launch file arguments 'limited', i.e.:
 ```
@@ -66,22 +68,30 @@ roslaunch ur5_moveit_config moveit_rviz.launch config:=true
 catkin_create_pkg [package name] ... 
 ```
 
+catkin_create_pkg moveit_test interactive_markers moveit_core moveit_visual_tools moveit_ros_planning moveit_ros_planning_interface moveit_ros_perception pluginlib geometric_shapes pcl_ros pcl_conversions rosbag tf2_ros tf2_eigen tf2_geometry_msgs
+
 ### 8.　Install necessary dependency
 
 ```
-cd ~/ws_moveit/src
+cd ws_moveit/src
 rosdep install -y --from-paths . --ignore-src --rosdistro kinetic
 ```
 ### 9. Make or build workspace 
 ```
 cd ~/ws_moveit
-catkin config --extend /opt/ros/${ROS_DISTRO} --cmake-args -DCMAKE_BUILD_TYPE=Release
-catkin build
+<!-- catkin config --extend /opt/ros/${ROS_DISTRO} --cmake-args -DCMAKE_BUILD_TYPE=Release
+catkin build -->
+catkin_make
 ```
 ### 10. Add `setup.bash` 
 
 ```
-source ~/ws_moveit/devel/setup.bash
-# echo 'source ~/ws_moveit/devel/setup.bash' >> ~/.bashrc
+source ~/research/ws_moveit/devel/setup.bash
+# echo 'source /home/wangfuyi15/research/ws_moveit/devel/setup.bash' >> ~/.bashrc
 ```
-
+###　11. Run your own node
+```
+roscore
+rosrun pack node
+# roslaunch pack demo.launch
+```
