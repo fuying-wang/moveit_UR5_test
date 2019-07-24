@@ -46,7 +46,7 @@ sudo apt install ros-<distro>-ur-description
 ```
 
 ### 6. Using Moveit! with hardware 
-####　１). For setting up the MoveIt! nodes to allow motion planning run (assumes the connection is already established):
+#### 1). For setting up the MoveIt! nodes to allow motion planning run (assumes the connection is already established):
 ```
 <!-- roslaunch ur5_moveit_config ur5_moveit_planning_execution.launch -->
 roslaunch ur5_e_moveit_config ur5_e_moveit_planning_execution.launch
