@@ -38,7 +38,6 @@ catkin_make
 ```
 roslaunch ur_modern_driver ur5_bringup.launch robot_ip:=IP_OF_THE_ROBOT [reverse_port:=REVERSE_PORT]
 ```
-Note: the IP 10.10.10.60 is for the UR5e on the left. The IP for the UR5e on the right is 10.10.10.61
 
 > Where ROBOT_IP_ADDRESS is your UR arm's IP and XX is '5' or '10' depending on your robot. The above launch file makes calls to both roscore and the launch file to the urXX_description so that ROS's parameter server has information on your robot arm. If you do not have your ur_description installed please do so via:
 ```
